@@ -9,4 +9,8 @@ npm run dev
 Go to localhost:3000
 ```
 
+<img src="/pongGameGif1.gif" width="600">
+<img src="/pongGameGif2.gif" width="600">
+
+
 
