@@ -161,7 +161,7 @@ var Game = {
             $('.rightpaddleinfo').text("Speed : " + this.paddle.speed + " Y : " + this.paddle.y);
             // If the ball collides with the bound limits - correct the x and y coords.
             if (this.ball.x <= 0) {
-                socket.emit('sendYouWonDataToEnemy', ''); 
+                socket.emit('sendYouWonDataToEnemy', '');
                 this.ball.moveX = DIRECTION.IDLE;
                 Pong._resetTurn.call(this, this.paddle, this.player);
             }
@@ -222,9 +222,8 @@ var Game = {
             //if (this.paddle.y >= this.canvas.height - this.paddle.height) this.paddle.y = this.canvas.height - this.paddle.height;
             //else if (this.paddle.y <= 0) this.paddle.y = 0;
 
-            if(this.ball.x < this.player.x && this.ball.x > this.player.x - 10)
-            {
-                socket.emit('sendSyncBallDataToEnemy', Pong.ball); 
+            if (this.ball.x < this.player.x && this.ball.x > this.player.x - 10) {
+                socket.emit('sendSyncBallDataToEnemy', Pong.ball);
             }
 
             // Handle Player-Ball collisions
@@ -232,7 +231,7 @@ var Game = {
                 if (this.ball.y <= this.player.y + this.player.height && this.ball.y + this.ball.height >= this.player.y) {
                     this.ball.x = (this.player.x + this.ball.width);
                     this.ball.moveX = DIRECTION.RIGHT;
-                    socket.emit('sendSyncBallDataToEnemy', Pong.ball); 
+                    socket.emit('sendSyncBallDataToEnemy', Pong.ball);
                     //beep1.play();
                 }
             }
@@ -409,7 +408,7 @@ var Game = {
             };
 
             if (Pong.running === true) {
-                socket.emit('sendPlayerPongDataToEnemy', Pong.player); 
+                socket.emit('sendPlayerPongDataToEnemy', Pong.player);
                 //connection.invoke("SendGameDataToRoom", "", "playerData", JSON.stringify(Pong.player));
 
                 //if (counter == 8) { connection.invoke("SendGameDataToRoom", "", "syncBallData", JSON.stringify(Pong.ball)); counter = 0; }
@@ -426,8 +425,8 @@ var Game = {
 
             Pong.player.move = DIRECTION.IDLE;
             if (Pong.running === true) {
-                
-                socket.emit('sendPlayerPongDataToEnemy', Pong.player); 
+
+                socket.emit('sendPlayerPongDataToEnemy', Pong.player);
                 //connection.invoke("SendGameDataToRoom", "", "playerData", JSON.stringify(Pong.player));
 
                 //if (counter == 8) { connection.invoke("SendGameDataToRoom", "", "syncBallData", JSON.stringify(Pong.ball)); counter = 0; }
@@ -436,6 +435,8 @@ var Game = {
                 //connection.invoke("SendGameDataToRoom", "", "readyState", "");
             }
         });
+
+
     },
 
     // Reset the ball location, the player turns and set a delay before the next round begins.
@@ -450,7 +451,7 @@ var Game = {
 
     // Wait for a delay to have passed after each turn.
     _turnDelayIsOver: function () {
-        return (setTimeout(function () {  }, 1000));
+        return (setTimeout(function () { }, 1000));
     },
 
     // Select a random color as the background of each level/round.

@@ -18,7 +18,7 @@
         <link href="./css/messagebox.css" rel="stylesheet" />
     </head>
 
-    <body>
+    <body style="background-color: darkslategray; color:whitesmoke;">
         <div class="alert alert-warning alert-dismissible d-none" style="display:none;" id="errorAlert" role="alert">
             <span data-bind=""></span>
             <button type="button" class="close" aria-label="Close">
@@ -27,7 +27,8 @@
         </div>
 
 
-        <div class="app" style="background-color: darkslategray; color:whitesmoke;">
+        <!-- <div class="container" style="background-color: darkslategray; color:whitesmoke;"> -->
+        <main role="main w-100" class="container-fluid" style="background-color: darkslategray; color:whitesmoke;">
 
             <!--<div class="main-content users-container col-lg-2 col-md-12">
                 <div class="header">
@@ -48,23 +49,32 @@
             <input type="text" class="" placeholder="Search someone..." data-bind="value: filter, valueUpdate: 'afterkeydown'" />-->
             <!--</div>-->
 
-            <div class="main-content col-lg-8 col-md-12">
+            <div class="row">
+                <div class="main-content col-lg-9 col-md-9 col-sm-12" style="height: auto; max-height: 100vh;">
 
-                <div class="header">
-                    <h5 data-bind="text: myName">User name</h5>
-                    <!--<form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="/" method="post">
+                    <div id="mainHeader" class="header">
+                        <h5 data-bind="text: myName">User name</h5>
+                        <!--<form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="/" method="post">
                             <button type="submit" class="btn-sign-out"><i class="fas fa-sign-out-alt"></i></button>
                         </form>-->
-                </div>
+                    </div>
 
 
 
-                <div class="canvasOuterDiv"
-                    style="width:100%; height: auto; margin: 15px 0 15px 0; box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.5);">
-                    <canvas id="PongGameCanvas"></canvas>
-                </div>
+                    <div class="canvasOuterDiv"
+                        style="height: auto; margin: 15px 0 15px 0; box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.5); background-color: darkslategray;">
+                        <canvas id="PongGameCanvas" style="height: auto;"></canvas>
+                        <div id="leftBtn" type="button" class="btn btn-success  btn-floating"
+                            style="float: left; display: none;">
+                            <i class="fab fa fa-arrow-left"></i>
+                        </div>
+                        <div id="rightBtn" type="button" class="btn btn-success  btn-floating"
+                            style="float: right; display: none;">
+                            <i class="fab fa fa-arrow-right"></i>
+                        </div>
+                    </div>
 
-                <!-- <div>
+                    <!-- <div>
                     <div class="leftpaddleinfo"
                         style="float: left; width: 200px; height: 50px; border: 1px solid #ffffff;">
 
@@ -74,32 +84,33 @@
 
                     </div>
                 </div> -->
-            </div>
+                </div>
 
 
-            <div class="main-content col-lg-3 col-md-12" style="border-right: none;">
+                <div class="main-content min-vh-100 col-lg-3 col-md-3 col-sm-12"
+                    style="border-right: none; height: 100vh; max-height: 100vh;">
 
-                <div class="header">
-                    <h5 id="joinedRoom">Rakip</h5>
-                    <!--<button type="button" class="btn btn-link" data-toggle="modal" data-target="#remove-room-modal">
+                    <div class="header ">
+                        <h5 id="joinedRoom">Rakip</h5>
+                        <!--<button type="button" class="btn btn-link" data-toggle="modal" data-target="#remove-room-modal">
                             <i class="fas fa-times"></i>
                         </button>-->
-                </div>
+                    </div>
 
-                <div class="chat-body">
-                    <ul class="list-unstyled chat-body-ul" data-bind="">
+                    <div class="chat-body flex-grow-1">
+                        <ul class="list-unstyled chat-body-ul flex-grow-1" data-bind="">
 
-                    </ul>
-                </div>
+                        </ul>
+                    </div>
 
-                <div class="chat-input"
-                    style="margin-bottom: 10px; border: 1px solid #fff; border-radius: 5px; padding: 3px;">
-                    <input id="chat-message" type="text" value=""
-                        style="background-color: #4ea694; margin-left: 2px; color:#fff; border-radius: 5px;"
-                        data-bind="value:message, valueUpdate: 'afterkeydown', event: { keypress: onEnter }"
-                        placeholder="Bir mesaj yaz.." />
-                    <div class="actions d-flex align-items-center">
-                        <!--<form method="post" asp-action="Upload" asp-controller="Upload" enctype="multipart/form-data" id="uploadForm">
+                    <div class="chat-input" style="margin-bottom: 10px; border: 1px solid #fff; border-radius: 5px; padding: 3px;
+                        bottom: 0;">
+                        <input id="chat-message" type="text" value=""
+                            style="background-color: #4ea694; margin-left: 2px; color:#fff; border-radius: 5px;"
+                            data-bind="value:message, valueUpdate: 'afterkeydown', event: { keypress: onEnter }"
+                            placeholder="Bir mesaj yaz.." />
+                        <div class="actions d-flex align-items-center">
+                            <!--<form method="post" asp-action="Upload" asp-controller="Upload" enctype="multipart/form-data" id="uploadForm">
                                 <label for="UploadedFile" class="custom-file-upload">
                                     <i class="far fa-image"></i>
                                 </label>
@@ -109,80 +120,22 @@
                             <a id="emojibtn" href="#">
                                 <i class="far fa-smile"></i>
                             </a>-->
-                        <i class="fas fa-paper-plane" id="btn-send-message" data-bind="click: sendNewMessage"></i>
+                            <i class="fas fa-paper-plane" id="btn-send-message" data-bind="click: sendNewMessage"></i>
+                        </div>
                     </div>
-                </div>
 
-            </div>
-
-        </div>
-
-        <div class="modal" id="create-room-modal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Create Room</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <input type="text" class="form-control" id="roomName" placeholder="Room name">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" data-dismiss="modal" data-bind="">Create</button>
-                    </div>
                 </div>
             </div>
-        </div>
+        </main>
+        <!-- </div> -->
 
-        <div class="modal" id="remove-room-modal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Delete Room</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Are you sure you want to delete this Chat Room?</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal" data-bind="">Delete</button>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <button type="button" class="btn btn-link" style="display: none;" id="ask-new-game-button" data-toggle="modal"
-            data-target="#ask-new-game-modal">
-            <i class="fas fa-times"></i>
-        </button>
 
-        <div class="modal" id="ask-new-game-modal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Rakip Seçim</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Bu rakiple oynamaya devam etmek istiyor musunuz ?</p>
-                        <p id="newGameResponse"></p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" id="ayniRakipleDevam" class="btn btn-primary" data-bind="">Devam
-                            Et</button>
-                        <button type="button" id="yeniRakipAra" class="btn btn-secondary" data-dismiss="modal"
-                            data-bind="">Yeni Rakip Ara</button>
-                    </div>
-                </div>
-            </div>
+        <div id="users-device-size">
+            <div id="xs" class="visible-xs"></div>
+            <div id="sm" class="visible-sm"></div>
+            <div id="md" class="visible-md"></div>
+            <div id="lg" class="visible-lg"></div>
         </div>
 
 
@@ -224,7 +177,7 @@
 
             socket.on('userNameError', message => {
                 callMessageBoxForUsername('Bu kullanıcı adı alınmış. Başka bir tane deneyin.');
-            });   
+            });
 
             callMessageBoxForUsername();
 
@@ -268,7 +221,6 @@
 
             }
 
-
             function callMessageBoxForKeepPlaying() {
 
                 $.MessageBox({
@@ -300,8 +252,90 @@
 
             }
 
+            function getBootstrapDeviceSize() {
+                return $('#users-device-size').find('div:visible').first().attr('id');
+            }
+
             var viewModel = new AppViewModel();
             ko.applyBindings(viewModel);
+
+            if (getBootstrapDeviceSize() === 'xs') {
+                $('#mainHeader').css('display', 'none');
+                $('#leftBtn').css('display', 'block');
+                $('#rightBtn').css('display', 'block');
+            }
+
+
+            var sentUp = '';
+            $('#leftBtn').on('mousedown touchstart', function mouseState(e) {
+
+                clearInterval(sentUp);
+
+                sentUp = setInterval(function () {
+
+                    if (Pong.running === true) {
+                        Pong.player.move = DIRECTION.UP;
+                        socket.emit('sendPlayerPongDataToEnemy', Pong.player);
+                        //connection.invoke("SendGameDataToRoom", "", "playerData", JSON.stringify(Pong.player));
+
+                        //if (counter == 8) { connection.invoke("SendGameDataToRoom", "", "syncBallData", JSON.stringify(Pong.ball)); counter = 0; }
+                    }
+                    else {
+                        //connection.invoke("SendGameDataToRoom", "", "readyState", "");
+                    }
+                }, 100);
+            });
+            $('#leftBtn').on("mouseleave mouseup touchend", function () {
+
+                console.log('up');
+                clearInterval(sentUp);
+
+
+                if (Pong.running === true) {
+                    Pong.player.move = DIRECTION.IDLE;
+                    socket.emit('sendPlayerPongDataToEnemy', Pong.player);
+                    //connection.invoke("SendGameDataToRoom", "", "playerData", JSON.stringify(Pong.player));
+
+                    //if (counter == 8) { connection.invoke("SendGameDataToRoom", "", "syncBallData", JSON.stringify(Pong.ball)); counter = 0; }
+                }
+                else {
+                    //connection.invoke("SendGameDataToRoom", "", "readyState", "");
+                }
+            });
+
+            var sentDown = '';
+            $('#rightBtn').on('mousedown touchstart', function mouseState(e) {
+                clearInterval(sentDown);
+                sentDown = setInterval(function () {
+
+                    if (Pong.running === true) {
+                        Pong.player.move = DIRECTION.DOWN;
+                        socket.emit('sendPlayerPongDataToEnemy', Pong.player);
+                        //connection.invoke("SendGameDataToRoom", "", "playerData", JSON.stringify(Pong.player));
+
+                        //if (counter == 8) { connection.invoke("SendGameDataToRoom", "", "syncBallData", JSON.stringify(Pong.ball)); counter = 0; }
+                    }
+                    else {
+                        //connection.invoke("SendGameDataToRoom", "", "readyState", "");
+                    }
+                }, 100);
+            });
+            $('#rightBtn').on("mouseleave mouseup touchend", function () {
+
+                clearInterval(sentDown);
+
+                if (Pong.running === true) {
+                    Pong.player.move = DIRECTION.IDLE;
+                    socket.emit('sendPlayerPongDataToEnemy', Pong.player);
+                    //connection.invoke("SendGameDataToRoom", "", "playerData", JSON.stringify(Pong.player));
+
+                    //if (counter == 8) { connection.invoke("SendGameDataToRoom", "", "syncBallData", JSON.stringify(Pong.ball)); counter = 0; }
+                }
+                else {
+                    //connection.invoke("SendGameDataToRoom", "", "readyState", "");
+                }
+            });
+
 
 
         </script>

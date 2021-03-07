@@ -6,7 +6,7 @@ const moment = require('moment');
 var sleep = require('thread-sleep');
 
 const app = express();
-const server = http.createServer(app);
+const server = http.createServer(app).listen(3000, '0.0.0.0');
 const io = socketio(server);
 
 // Set static folder
